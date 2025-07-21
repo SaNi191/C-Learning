@@ -1,4 +1,7 @@
 #include <iostream>
+// we have seen these headers before in C, executes before compilation for linking
+// can add other source files or, in this case, include standard libraries using angle brackets
+
 
 int main() {
     int cur_year = 2025;
