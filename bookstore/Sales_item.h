@@ -10,9 +10,13 @@ public:
     float price_sold;
     float total_revenue;
 
-    float get_average();
+    friend std::istream& operator>> (std::istream& is, Sales_item& item);
 
-    void sold_unit(int units_sold, int price);
+    friend std::ostream& operator<< (std::ostream& os, Sales_item& item);
+
+    // only valid if IBN of first and second match
+    friend Sales_item& operator+ (Sales_item& first, Sales_item& second);
+    float get_average();
 
     void print_info();
 };
