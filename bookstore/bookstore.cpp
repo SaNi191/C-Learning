@@ -3,6 +3,7 @@
 
 void read();
 void count();
+void bookstore();
 
 int main() {
     /*
@@ -19,10 +20,36 @@ int main() {
     std::cout << book1 + book2;
     */
    
+    // functions for exercises
+
+    /*
     count();
+    read();
+    */
+
+    bookstore();
 
     return 0;
 }
+
+void bookstore() {
+    Sales_item total;
+    if (std::cin >> total) {
+        Sales_item temp;
+        while (std::cin >> temp) {
+            if (temp.IBN == total.IBN) {
+                total =  total + temp;
+            } else {
+                std::cout << total << std::endl;
+                total = temp;
+            }
+        }
+        std::cout << total << std::endl;
+    } else {
+        std::cerr << "Invalid Input!" << std::endl;
+    }
+}
+
 
 void count() {
     Sales_item cur;

@@ -1,0 +1,3 @@
+Application:
+- input: transactions representing book sales, grouped by IBN
+- output:compile report for each book type (by IBN) returning total revenue, average sales price, copies sold
