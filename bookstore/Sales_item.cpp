@@ -20,7 +20,7 @@ Sales_item& operator+ (Sales_item & first, Sales_item & second) {
         first.price_sold = second.price_sold;
         first.sold_copies += second.sold_copies;
     } else {
-        std::cout << "Error: Different IBN!" << std::endl;
+        std::cerr << "Error: Different IBN!" << std::endl;
     }
 
     return first;

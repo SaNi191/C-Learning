@@ -2,8 +2,10 @@
 #include "Sales_item.h"
 
 void read();
+void count();
 
 int main() {
+    /*
     Sales_item book1;
     std::cout << "Enter IBN, sold copies, price sold" << std::endl;
     std::cin >> book1;
@@ -15,10 +17,29 @@ int main() {
     std::cout << book2;
 
     std::cout << book1 + book2;
-
-    read();
+    */
+   
+    count();
 
     return 0;
+}
+
+void count() {
+    Sales_item cur;
+    int counter = 1;
+    if (std::cin >> cur) {
+        Sales_item temp;
+        while (std::cin >> temp) {
+            if(cur.IBN == temp.IBN) {
+                counter++;
+            } else {
+                std::cout << cur << counter << std::endl;
+                cur = temp;
+                counter = 1;
+            }
+        }
+    }
+
 }
 
 
