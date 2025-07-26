@@ -1,0 +1,10 @@
+Q 2.1:
+the difference between long, int, short, long long is the minimum bytes allocated to storing the values in memory
+due to the differences there will be differences in the range of values that can be stored, short - long long in capacity
+they are all signed types
+
+Q 2.2:
+rate should be double
+principle should be integer
+payment should be double
+
