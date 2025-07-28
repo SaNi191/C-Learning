@@ -1,0 +1,21 @@
+Application:
+- input: user selects a unit conversion type and enters a value
+- output: display the converted result and repeat until quit
+
+Required Features:
+- menu with at least 3 conversions:
+    • Celsius to Fahrenheit
+    • Kilograms to Pounds
+    • Meters to Feet
+- input validation for numeric values
+- use of: int, double, bool, char
+- use const for conversion factors
+- use auto and decltype at least once
+- basic I/O with std::cin and std::cout
+- must use struct to define class
+
+Implementation:
+- if-else for menu logic
+- clean variable naming and scope
+- inline arithmetic, optional use of references
+- formatted, readable output
