@@ -11,8 +11,10 @@ double convert(const double &val, const std::string &unit, Unit_convertor &conve
     if (unit == convertor.base_unit) {
         result = convertor.forward_rate * val + convertor.adjustment;
     } else if (unit == convertor.result_unit) {
-        result = convertor.backward_rate * val - convertor.adjustment;
+        // adjust first, then apply reciprocal rate
+        result = convertor.backward_rate * (val - convertor.adjustment);
     } else {
+        // catch for mispelled or invalid unit
         std::cout << "Error: Unknown Unit!" << std::endl;
         result = 0;
     }
@@ -27,6 +29,7 @@ Unit_convertor create(void) {
     std::cin >> result_unit;
 
     std::cout << "Enter Base Unit: ";
+    // use decltype to match base_unit to result_unit type
     decltype(result_unit) base_unit;
     std::cin >> base_unit;
 
@@ -34,8 +37,10 @@ Unit_convertor create(void) {
     double forward_rate;
     std::cin >> forward_rate;
 
+    // similar to above, match type with forward_rate
     decltype(forward_rate) backward_rate;
 
+    // catch for division by zero edge case
     if (forward_rate != 0) {
         backward_rate = 1/forward_rate;
     } else {
@@ -47,6 +52,8 @@ Unit_convertor create(void) {
     double adjustment;
     std::cin >> adjustment;
 
+
+    // initialize temp and return by value
     Unit_convertor temp = {forward_rate, backward_rate, adjustment, result_unit, base_unit};
     return temp;
 }
@@ -58,6 +65,7 @@ void init_default() {
     Unit_convertor meter_to_foot = {3.280, 0.305, 0, "Foot", "Meter"};
     Unit_convertor kilogram_to_pound = {2.205, 0.454, 0, "Pound", "Kilogram"};
 
+    // add default convertors to container
     all_convertors.push_back(celsius_to_fahrenheit);
     all_convertors.push_back(meter_to_foot);
     all_convertors.push_back(kilogram_to_pound);
