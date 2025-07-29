@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-const std::string menu_text = "What would you like to do:\n---------\n1. Convert\n2. New Convertor\n0. Quit\n---------\n";
+const std::string menu_text = "What would you like to do:\n---------\n0. Quit\n1. Convert\n2. New Convertor\n---------\n";
 
 
 void menu(unsigned choice) {
@@ -21,6 +21,11 @@ void menu(unsigned choice) {
         }
         choice--;
         // adjust choice to match index
+
+        if(choice >= all_convertors.size()) {
+            std::cout << "Error: selected out of range (" << all_convertors.size() << ")" << std::endl;
+            return;
+        }
 
         // set chosen convertor
         Unit_convertor chosen = all_convertors[choice];
@@ -43,6 +48,7 @@ void menu(unsigned choice) {
         // use ternary operator to print out relevant converted unit
         std::cout << result << " " << ((unit == chosen.base_unit) ? chosen.result_unit : chosen.base_unit) << std::endl;
         return;
+
     } else if (choice == 2) {
         // New convertor, create returns convertors
         Unit_convertor new_convertor = create();
@@ -70,7 +76,7 @@ int main() {
     while(choice != 0) {
         menu(choice);
 
-        std::cout << menu_text << "Choice: " << std::endl;
+        std::cout << menu_text << "Choice: ";
         std::cin >> choice;
     }
 }
