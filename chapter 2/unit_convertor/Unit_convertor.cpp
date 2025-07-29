@@ -13,7 +13,7 @@ double convert(const double &val, const std::string &unit, Unit_convertor &conve
     } else if (unit == convertor.result_unit) {
         result = convertor.backward_rate * val - convertor.adjustment;
     } else {
-        std::cout << "Error: Unknown Unit";
+        std::cout << "Error: Unknown Unit!" << std::endl;
         result = 0;
     }
 
@@ -55,8 +55,8 @@ Unit_convertor create(void) {
 // create default convertors
 void init_default() {
     Unit_convertor celsius_to_fahrenheit = {1.8, 0.556, 32, "Fahrenheit", "Celsius"};
-    Unit_convertor meter_to_foot = {3.28, 0.305, 0, "Meter", "Foot"};
-    Unit_convertor kilogram_to_pound = {2.205, 0.454, 0, "Kilogram", "Pound"};
+    Unit_convertor meter_to_foot = {3.280, 0.305, 0, "Foot", "Meter"};
+    Unit_convertor kilogram_to_pound = {2.205, 0.454, 0, "Pound", "Kilogram"};
 
     all_convertors.push_back(celsius_to_fahrenheit);
     all_convertors.push_back(meter_to_foot);
