@@ -42,8 +42,8 @@ void menu(unsigned choice) {
         std::string unit;
         std::cin >> unit;
 
-        // produce result
-        double result = convert(value, unit, chosen);
+        // produce result in an integer, remove decimals which may contain inaccuracies on account of floating point math
+        int result = convert(value, unit, chosen);
 
         // use ternary operator to print out relevant converted unit
         std::cout << result << " " << ((unit == chosen.base_unit) ? chosen.result_unit : chosen.base_unit) << std::endl;
